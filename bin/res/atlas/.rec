@@ -1,0 +1,68 @@
+D .
+D music
+R 09A968F7 click.mp3
+D ui
+D ui/common
+P 442C0E66 blank.png
+P 9DE64A16 blank_2.png
+P 46FEA484 btn_purple.png
+P 388981A1 btn_yellow_share.png
+P 6A38D20C btn_yellow_video.png
+P 1F3929EA button.png
+P 40C0D698 com_img_alpha.png
+P E330E3D6 frame_bg.png
+P E466EB1C hslider$bar.png
+P C4BECA54 hslider.png
+P C7620875 img_close.png
+P E83E7937 img_op_desk.png
+P FD542AD5 img_op_hand.png
+P E7D45BAC img_opt_bg.png
+P 87DF11FE img_red_point.png
+D ui/loading
+R C05EB70D loadBg.jpg
+P BC249F82 logo.png
+P DC1BBCDB progress$bar.png
+P EEB5EB6D progress.png
+D ui/side
+P D5A28FAD image_gdhw.png
+P 1E1BF1C3 img_back.png
+P 9344484B img_bg.png
+P 9F0AB613 img_bg1.png
+P 5764C952 img_blueBg.png
+P 11785A20 img_blueframe.png
+P 8755BAAB img_bot_bg.png
+P 9DEE4308 img_btn.png
+P 39EB9775 img_continue.png
+P F9BF8A06 img_iconBg.png
+P 125D2D51 img_left0.png
+P D9CBB6E8 img_left1.png
+P 8D144774 img_left2.png
+P 7610E0B3 img_line.png
+P 06A1D365 img_list_title.png
+P 4748DDF3 img_more.png
+P 27FC4E74 img_more_back.png
+P 903FB072 img_more_bg0.png
+P 6DE132E3 img_more_bg1.png
+P 1386BC81 img_more_item.png
+P C0313665 img_more_text_bg.png
+P 6E939D4A img_more_title0.png
+P 6DE13388 img_more_title1.png
+P 464885A6 img_new.png
+P 6B9B507E img_new_close.png
+P 20F00ADD img_op_left_bg.png
+P E07E6D27 img_op_left_title.png
+P DA1C1649 img_redpoint.png
+P F4394E3D img_right_bg0.png
+P 49308341 img_right_bg1.png
+P 532DBFEF img_side_bg.png
+P ECE55733 img_side_bg0.png
+P 55400912 img_side_mask.png
+P 1C77E83C img_star.png
+P 288B06F8 img_use_text.png
+P 0A34F4E4 lbl_back.png
+P 90A51CB2 lbl_continue.png
+P BC0AD290 lbl_djgb.png
+P 68ADEF19 lbl_emtj  —.png
+P 26D33B23 lbl_hyew  —.png
+P 0A770DF9 moreplay_frame.png
+P B699BA9C moreplayerlbl.png
