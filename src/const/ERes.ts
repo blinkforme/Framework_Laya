@@ -23,7 +23,7 @@ addRoot(EAtlas, AtlasRoot);
 
 // 音效文件
 let ESound = {
-    Bgm: "bgmusic.mp3",
+    Bgm: "bgMusic.mp3",
     BtnClick: "click.mp3"
 };
 addRoot(ESound, SoundRoot);

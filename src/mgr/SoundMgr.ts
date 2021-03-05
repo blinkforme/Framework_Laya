@@ -87,13 +87,13 @@ export default class SoundMgr {
      * 播放背景音乐
      */
     public static playBGM(): void {
-        return;
         var self = this;
         if (self.openMusic) {
             if (!self.$channel) {
+                console.log("666")
                 self.$channel = Laya.SoundManager.playMusic(ESound.Bgm);
             }
-            self.setMusicVolume(0.2);
+            self.setMusicVolume(1);
         }
     }
 

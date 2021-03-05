@@ -8,6 +8,8 @@ import GameConst from "../const/GameConst";
  * 类接口，新增参数是便于UI管理类的使用，UI类勿随意更改这些变量
  */
 interface IBaseView extends Laya.UIBaseView {
+    register(): void;
+    unRegister(): void;
     $uiConfig?: IUIConfig;      // ui配置
     $showBanner?: boolean;      // 是否显示banner
     // Laya未暴露属性
@@ -145,30 +147,6 @@ export default class UIMgr {
             // 通知顶层显示
             curTop.onShow();
         }
-    }
-
-    /**
-     * 显示底部卖量
-     */
-    protected static showSideList(ui: IBaseView): void {
-        // var list = UIMgr._sideList;
-        // if (!list) {
-        //     list = new SideList;
-        //     list.zOrder = 100;
-        //     list.centerX = 0;
-        // }
-        // Utils.uiEnableCall(ui, function () {
-        //     ui.addChild(list);
-        //     list.y = Utils.globalToLocal(ui, 0, Laya.stage.height - 200).y; // 200 为list的高度
-        // });
-    }
-
-    /**
-     * 隐藏卖量列表
-     */
-    protected static hideSideList(): void {
-        // var list = UIMgr._sideList;
-        // list && (list.visible = false);
     }
 
     /**
@@ -330,7 +308,7 @@ export default class UIMgr {
                 // 动画
                 uiConfig.tween && UIMgr.showTween(ui);
                 ui.eventCount && ui.eventCount();
-
+                ui.register();
                 EventMgr.event(EventType.CloseUI,uiConfig);
 
 
@@ -370,6 +348,7 @@ export default class UIMgr {
                 let ui = _uiArray[i];
                 if (ui.$uiConfig == uiConfig) {
                     _uiArray.splice(i, 1);
+                    ui.unRegister();
                     UIMgr.onUIClose(ui);
                     isTop = i == endi;
                     break;

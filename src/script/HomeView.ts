@@ -4,20 +4,28 @@ import EUI from "../const/EUI";
 import EventMgr from "../mgr/EventMgr";
 import EventType from "../const/EventType";
 
-/**
- * 主页   误触已经集成到框架，请统一使用
- */
-export default class HomeView extends ui.view.HomeViewUI {
+export default class HomeView extends ui.view.HomeViewUI{
 
     public onAwake(){
         super.onAwake();
         UIMgr.closeUI(EUI.LoadingView);
-        this.screenResize()
+        console.log("适配调整1")
+        this.screenResize();
         this.regClick(this.btnStart,this.onStart);
     }
 
     private screenResize():void{
-        // this.size(Laya.stage.width, Laya.stage.height)
+        console.log("适配调整2","Laya.stage.height----",Laya.stage.height,"Laya.stage.width---",Laya.stage.width)
+        this.view_bg.width = 1280;
+        this.view_bg.height = 720;
+        if ((Laya.stage.height / Laya.stage.width) > (720 / 1280))
+        {
+            this.view_bg.height = Laya.stage.height;
+        } else
+        {
+            this.view_bg.width = Laya.stage.width;
+        }
+        this.size(Laya.stage.width, Laya.stage.height)
     }
 
     private onStart(){
@@ -26,10 +34,11 @@ export default class HomeView extends ui.view.HomeViewUI {
     }
 
     public register(){
-        // EventMgr.on(EventType.ScreenResize, this, this.screenResize)
+        console.log("主界面消息注册器")
+        EventMgr.on(EventType.ScreenResize, this, this.screenResize)
     }
 
     public unRegister(){
-        // EventMgr.off(EventType.ScreenResize, this, this.screenResize)
+        EventMgr.off(EventType.ScreenResize, this, this.screenResize)
     }
 }

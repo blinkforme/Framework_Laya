@@ -14,12 +14,16 @@ import EUI from "./const/EUI";
 import ScreenAdaptMgr from "./mgr/ScreenAdaptMgr";
 import ConfigMgr from "./mgr/ConfigMgr";
 import manifest from "./conf/manifest";
+import StartParam from "./core/tools/StartParam";
 
 class Main {
 
 	private _hideTime:number;//切后台时间
 
 	constructor() {
+
+		StartParam.instance.init(ENV.config);
+		StartParam.instance.parseHtmlParamString();
 		//根据IDE设置初始化引擎		
 		Laya.init(GameConfig.width, GameConfig.height, Laya["WebGL"]);
 		ScreenAdaptMgr.instance.init();
@@ -81,6 +85,7 @@ class Main {
 		SoundMgr.init();
 		DataStatistics.init();
 		UserData.instance.init();
+		Laya.SoundManager.playSound("music/none.mp3")
 		UIMgr.openUI(EUI.LoadingView);
 	}
 

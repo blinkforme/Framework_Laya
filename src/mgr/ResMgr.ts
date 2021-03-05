@@ -68,9 +68,6 @@ export default class ResMgr {
         
         // 初始化配表
         ConfigMgr.init(manifest.cfg_names, null);
-        // 这里可以加上根据玩家的信息获取关卡配置、模型等数据存放到reload
-        // var config = CfgDataMgr.instance.levelCfg[UserData.isntance.level];
-        // reload.push(config);
         // 加载资源
         Laya.loader.create(reload, Handler.create(ResMgr, ResMgr.onComplete1), Handler.create(ResMgr, ResMgr.onProgress1));
         // loading结束执行一次进入游戏检测
@@ -92,6 +89,7 @@ export default class ResMgr {
      * 进入游戏检测
      */
     private static launchGame(): void {
+        console.log("进游戏检测资源加载次数:",ResMgr._sucCount++)
         if (++ResMgr._sucCount == 2) {
             // 进入游戏，根据游戏自定 todo
             GameMgr.instance.launchGame();

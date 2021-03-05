@@ -102,6 +102,16 @@ export default class LoadingView extends ui.view.LoadingViewUI {
         this.txt.text = "加载失败，请确保网络正常，退出游戏重试";
     }
 
+    public register(){
+        console.log("注册消息接收")
+        // EventMgr.on(EventType.ScreenResize, this, this.screenResize)
+    }
+
+    public unRegister(){
+        console.log("注册消息关闭")
+        // EventMgr.off(EventType.ScreenResize, this, this.screenResize)
+    }
+
     // 勿删，有用代码
     // //3D资源大于4M的可以压缩zip再放分包里
     // public loadZipPackage():Promise<any>{

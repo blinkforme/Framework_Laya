@@ -11,33 +11,6 @@
     name?:string;               // 界面名称 一般用于界面打点
  */
 let EUI = {
-    /////////////////////////////////////////////////////////////////////
-    // 商业化
-    BigBoxView: {
-        class: "side/view/BigBoxView.ts",
-    },
-    GoldenEggView: {
-        class: "side/view/GoldenEggView.ts",
-        mask: true,
-        banner: true
-    },
-    MorePeopleView: {
-        class: "side/view/MorePeopleView.ts",
-        mask: true,
-        banner: true
-    },
-    SideMoreGameView: {
-        class: "side/view/SideMoreGameView.ts",
-        banner: true,
-        misTouch: "imgKeep",
-    },
-    SideBoxView: {
-        class: "side/view/SideBoxView.ts",
-        mask: true,
-    },
-    WXModelView: {
-        class: "model/side/WXModelView.ts"
-    },
 
     /////////////////////////////////////////////////////////////////////
     // 通用UI

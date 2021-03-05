@@ -46,13 +46,8 @@ export default class GameMgr {
     }
 
     launchGame() {
-        AldSDK.aldSendEvent('loading完成', false, { time: Date.now() });
         DebugCtrl.setEnable(true);
         SoundMgr.playBGM();
-
-        if(platform.isOppo) {
-            platform.reportMonitor('game_scene', 0);
-        }
 
         // 首页显示
         this.initEntities();
