@@ -16,7 +16,7 @@ export default class GameConfig{
     static screenMode:string="horizontal";
     static alignV:string="middle";
     static alignH:string="center";
-    static startScene:any="view/HomeView.scene";
+    static startScene:any="view/EliGame.scene";
     static sceneRoot:string="";
     static debug:boolean=false;
     static stat:boolean=true;

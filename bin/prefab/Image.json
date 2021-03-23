@@ -1,0 +1,1 @@
+{"type":"Image","props":{"width":80,"presetID":1,"name":"image","isPresetRoot":true,"height":80},"compId":6,"child":[{"type":"Image","props":{"y":-5,"x":-5,"width":90,"visible":false,"skin":"ui/mainPage/btn_icon_di.png","presetID":2,"name":"icon","height":90,"alpha":0.6},"compId":7}],"loadList":["ui/mainPage/btn_icon_di.png"],"loadList3D":[]}

@@ -5,6 +5,7 @@ import Scene=Laya.Scene;
 import {base} from './../UIBaseView';
 import UIBaseView = base.UIBaseView;
 UIBaseView.init();
+var REG: Function = Laya.ClassUtils.regClass;
 export module ui.view {
     export class DebugViewUI extends UIBaseView {
 		public list:Laya.List;
@@ -25,6 +26,10 @@ export module ui.view {
     export class EliGameUI extends UIBaseView {
 		public bg:Laya.Image;
 		public board:Laya.Box;
+		public tarScore:Laya.Label;
+		public nowScore:Laya.Label;
+		public lv:Laya.Label;
+		public returnBtn:Laya.Box;
         constructor(){ super()}
         createChildren():void {
             super.createChildren();

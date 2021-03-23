@@ -31,6 +31,7 @@ export default class HomeView extends ui.view.HomeViewUI{
 
     private onStart(){
         console.log("点击")
+        UIMgr.closeUI(EUI.HomeView)
         UIMgr.openUI(EUI.EliminateView);
     }
 

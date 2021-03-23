@@ -2,11 +2,11 @@
     "x":0,
     "type":"UIBaseView",
     "selectedBox":2,
-    "selecteID":4,
+    "selecteID":11,
     "searchKey":"UIBaseView",
     "props":{"width":1280,"sceneColor":"#000000","runtime":"script/eliminateGame/EliGameScene.ts","height":720},
     "nodeParent":-1,
-    "maxID":5,
+    "maxID":21,
     "label":"UIBaseView",
     "isOpen":true,
     "isDirectory":true,
@@ -26,21 +26,199 @@
             "hasChild":false,
             "compId":3,
             "child":[
-                ]
+                ],
+            "$HIDDEN":false
         },
         {
             "x":15,
             "type":"Box",
             "searchKey":"Box,board",
-            "props":{"width":800,"var":"board","top":40,"height":650,"centerX":-200},
+            "props":{"width":846,"var":"board","top":0,"height":720,"centerX":-217},
             "nodeParent":2,
             "label":"board",
+            "isOpen":false,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":4,
+            "child":[
+                {
+                    "type":"Image",
+                    "searchKey":"Image",
+                    "props":{"y":2,"x":0,"width":845,"skin":"ui/side/img_more_bg1.png","height":718},
+                    "nodeParent":4,
+                    "label":"Image",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":13,
+                    "child":[
+                        ]
+                }]
+        },
+        {
+            "x":15,
+            "type":"Image",
+            "searchKey":"Image",
+            "props":{"y":430,"x":915,"width":265,"skin":"ui/common_bg/img_jbzs_di.png","height":42},
+            "nodeParent":2,
+            "label":"Image",
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
-            "compId":4,
+            "compId":14,
             "child":[
                 ]
+        },
+        {
+            "x":15,
+            "type":"Label",
+            "searchKey":"Label",
+            "props":{"y":439,"x":942,"width":212,"text":"目标分数：","height":47,"fontSize":25,"font":"Microsoft YaHei","color":"#fb0c08"},
+            "nodeParent":2,
+            "label":"Label",
+            "isOpen":false,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":6,
+            "child":[
+                {
+                    "type":"Label",
+                    "searchKey":"Label,tarScore",
+                    "props":{"y":1,"x":115,"width":103,"var":"tarScore","text":"500000","height":28,"fontSize":25,"font":"Microsoft YaHei","color":"#ffffff","align":"center"},
+                    "nodeParent":6,
+                    "label":"tarScore",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":7,
+                    "child":[
+                        ]
+                }]
+        },
+        {
+            "x":15,
+            "type":"Image",
+            "searchKey":"Image",
+            "props":{"y":500,"x":914,"width":266,"skin":"ui/common_bg/img_jbzs_di.png","height":41},
+            "nodeParent":2,
+            "label":"Image",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":15,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Label",
+            "searchKey":"Label",
+            "props":{"y":509,"x":942,"width":215,"text":"当前分数：","height":44,"fontSize":25,"font":"Microsoft YaHei","color":"#fb0c08"},
+            "nodeParent":2,
+            "label":"Label",
+            "isOpen":false,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":8,
+            "child":[
+                {
+                    "type":"Label",
+                    "searchKey":"Label,nowScore",
+                    "props":{"y":1,"x":115,"width":103,"var":"nowScore","text":"500000","height":28,"fontSize":25,"font":"Microsoft YaHei","color":"#ffffff","align":"center"},
+                    "nodeParent":8,
+                    "label":"nowScore",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":9,
+                    "child":[
+                        ]
+                }]
+        },
+        {
+            "x":15,
+            "type":"Image",
+            "searchKey":"Image",
+            "props":{"y":613,"x":983,"width":133,"skin":"ui/common_bg/img_jbzs_di.png","height":42},
+            "nodeParent":2,
+            "label":"Image",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":16,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Label",
+            "searchKey":"Label",
+            "props":{"y":582,"x":942,"width":223,"text":"当前关卡","height":78,"fontSize":25,"font":"Microsoft YaHei","color":"#fb0c08","align":"center"},
+            "nodeParent":2,
+            "label":"Label",
+            "isOpen":true,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":11,
+            "child":[
+                {
+                    "x":30,
+                    "type":"Label",
+                    "searchKey":"Label,lv",
+                    "props":{"y":45,"x":56,"width":103,"var":"lv","text":"3","height":28,"fontSize":25,"font":"Microsoft YaHei","color":"#ffffff","align":"center"},
+                    "nodeParent":11,
+                    "label":"lv",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":12,
+                    "child":[
+                        ]
+                }]
+        },
+        {
+            "x":15,
+            "type":"Box",
+            "searchKey":"Box,returnBtn",
+            "props":{"y":15,"x":1116,"var":"returnBtn"},
+            "nodeParent":2,
+            "label":"returnBtn",
+            "isOpen":false,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":20,
+            "child":[
+                {
+                    "type":"Image",
+                    "searchKey":"Image",
+                    "props":{"skin":"ui/side/img_more_back.png"},
+                    "nodeParent":20,
+                    "label":"Image",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":17,
+                    "child":[
+                        ]
+                },
+                {
+                    "type":"Sprite",
+                    "searchKey":"Sprite",
+                    "props":{"y":9,"x":64,"texture":"ui/side/lbl_back.png"},
+                    "nodeParent":20,
+                    "label":"Sprite",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":18,
+                    "child":[
+                        ]
+                }]
         }],
     "animations":[
         {

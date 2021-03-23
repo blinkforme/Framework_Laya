@@ -21,4 +21,9 @@
    <item name="game/result_light.png" type="Sprite" compress="0" pack="2" quality="80" props="" picType="0" scale="0"/>
    <item name="npc_skin" type="" compress="0" pack="2" quality="80" props="" picType="0" scale="0"/>
    <item name="ui/eliGame/test.jpg" type="Image" compress="0" pack="0" quality="80" props="" picType="0" scale="0"/>
+   <item name="ui/mainPage/btn_icon_di.png" type="Image" compress="0" pack="0" quality="80" props="" picType="0" scale="0"/>
+   <item name="ui/common_bg/img_xia_di.png" type="Image" compress="0" pack="0" quality="80" props="sizeGrid=27,11,25,13" picType="0" scale="0"/>
+   <item name="ui/common_bg/img_jbzs_di.png" type="Image" compress="0" pack="0" quality="80" props="sizeGrid=12,26,12,29" picType="0" scale="0"/>
+   <item name="ui/side/img_side_mask.png" type="Image" compress="0" pack="0" quality="80" props="sizeGrid=28,26,27,29" picType="0" scale="0"/>
+   <item name="ui/side/img_more_bg1.png" type="Image" compress="0" pack="0" quality="80" props="sizeGrid=18,18,20,20" picType="0" scale="0"/>
 </res>
