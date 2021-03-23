@@ -1,28 +1,45 @@
 D .
 D music
+R 845859EE bgMusic.mp3
 R 09A968F7 click.mp3
 D ui
 D ui/common
-P 442C0E66 blank.png
-P 9DE64A16 blank_2.png
-P 46FEA484 btn_purple.png
-P 388981A1 btn_yellow_share.png
-P 6A38D20C btn_yellow_video.png
-P 1F3929EA button.png
-P 40C0D698 com_img_alpha.png
-P E330E3D6 frame_bg.png
-P E466EB1C hslider$bar.png
-P C4BECA54 hslider.png
-P C7620875 img_close.png
-P E83E7937 img_op_desk.png
-P FD542AD5 img_op_hand.png
-P E7D45BAC img_opt_bg.png
-P 87DF11FE img_red_point.png
+P 3D42177C coin1.png
+P 12829C06 coin2.png
+P 00D5F8EE coin3.png
+P 80F4275E coin4.png
+P F637DB56 coin5.png
+P D3D0AA9C coin6.png
+P 95849E9F diamond1.png
+P 88474096 diamond2.png
+P F09EFB77 diamond3.png
+P 2593E572 diamond4.png
+P B0658C75 diamond5.png
+P F2A293CD diamond6.png
+D ui/common_bg
+R AE525040 img_d.png
+P D683C8C9 img_dj_03.png
+P AA164959 img_jbzs_di.png
+R AAD340E0 img_ty_di.png
+P AE62BF39 img_xia_di.png
+D ui/common_ex
+P E5A8EED1 btn_blue.png
+P 22ADD8B8 btn_green.png
+P E191363B btn_yellow.png
+P E0AC4DF3 vscroll$bar.png
+P E0AC4DF3 vscroll$down.png
+P E0AC4DF3 vscroll$up.png
+P 31B1370A vscroll.png
+D ui/eliGame
+R 9E76CC79 test.jpg
 D ui/loading
 R C05EB70D loadBg.jpg
 P BC249F82 logo.png
 P DC1BBCDB progress$bar.png
 P EEB5EB6D progress.png
+D ui/mainPage
+P EBA0B1A1 btn_icon_di.png
+P E3F50C40 btn_icon_sz.png
 D ui/side
 P D5A28FAD image_gdhw.png
 P 1E1BF1C3 img_back.png

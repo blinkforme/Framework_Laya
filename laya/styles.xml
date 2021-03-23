@@ -20,4 +20,5 @@
    <item name="game/try_light.png" type="Sprite" compress="0" pack="2" quality="80" props="" picType="0" scale="0"/>
    <item name="game/result_light.png" type="Sprite" compress="0" pack="2" quality="80" props="" picType="0" scale="0"/>
    <item name="npc_skin" type="" compress="0" pack="2" quality="80" props="" picType="0" scale="0"/>
+   <item name="ui/eliGame/test.jpg" type="Image" compress="0" pack="0" quality="80" props="" picType="0" scale="0"/>
 </res>

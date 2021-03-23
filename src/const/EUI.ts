@@ -56,7 +56,13 @@ let EUI = {
         class: "script/ResultView.ts",
         mask: true,
         banner: true
-    }
+    },
+    EliminateView: {
+        class: "script/eliminateGame/EliGameScene.ts",
+        mask: true,
+        banner: true,
+        misTouch:'imgRestart'
+    },
 }
 
 export default EUI;

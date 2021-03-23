@@ -22,11 +22,11 @@ class Main {
 
 	constructor() {
 
-		StartParam.instance.init(ENV.config);
+		// StartParam.instance.init(ENV.config);
 		StartParam.instance.parseHtmlParamString();
 		//根据IDE设置初始化引擎		
 		Laya.init(GameConfig.width, GameConfig.height, Laya["WebGL"]);
-		ScreenAdaptMgr.instance.init();
+		// ScreenAdaptMgr.instance.init();
 		Laya.stage.scaleMode = GameConfig.scaleMode;
 		Laya.stage.screenMode = GameConfig.screenMode;
 		Laya.stage.alignV = GameConfig.alignV;
@@ -46,7 +46,7 @@ class Main {
 		// 默认loading，减少黑屏几率，延迟等高度出来
 		let userButton = window['userButton'];
 		if(!userButton) {
-			var stage = Laya.stage, dir = 'loading/';
+			var stage = Laya.stage, dir = 'ui/loading/';
 			var height = stage.height;
 			var logingBg = new Laya.Image(dir + 'loadBg.jpg');
 			logingBg.y = (height - 1650) / 2;

@@ -1,0 +1,1 @@
+{"type":"UIBaseView","props":{"width":1280,"runtime":"script/eliminateGame/EliGameScene.ts","height":720},"compId":2,"child":[{"type":"Image","props":{"width":1280,"var":"bg","skin":"ui/eliGame/test.jpg","height":720},"compId":3},{"type":"Box","props":{"width":800,"var":"board","top":40,"height":650,"centerX":-200},"compId":4}],"loadList":["ui/eliGame/test.jpg"],"loadList3D":[]}

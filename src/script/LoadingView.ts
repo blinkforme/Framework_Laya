@@ -1,4 +1,4 @@
-import { ui } from "../ui/layaMaxUI";
+import { ui } from "./../ui/layaMaxUI";
 import EventType from "../const/EventType";
 import ResMgr from "../mgr/ResMgr";
 import EventMgr from "../mgr/EventMgr";
