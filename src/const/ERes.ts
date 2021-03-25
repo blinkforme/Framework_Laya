@@ -16,6 +16,7 @@ let JsonRoot = "nativescene/";
 // 合图文件
 let EAtlas = {
     Game: "common.atlas",
+    GameBg: "common_bg.atlas",
 };
 addRoot(EAtlas, AtlasRoot);
 
@@ -24,7 +25,8 @@ addRoot(EAtlas, AtlasRoot);
 // 音效文件
 let ESound = {
     Bgm: "bgMusic.mp3",
-    BtnClick: "click.mp3"
+    BtnClick: "click.mp3",
+    getCoin: "getCoin.mp3"
 };
 addRoot(ESound, SoundRoot);
 

@@ -20,7 +20,9 @@ export default class ResMgr {
     // 进游戏预加载资源
     private static PreloadRes = [
         // 必须置顶
-        { url: EAtlas.Game, type: Laya.Loader.ATLAS }
+        { url: EAtlas.Game, type: Laya.Loader.ATLAS },
+        { url: EAtlas.GameBg, type: Laya.Loader.ATLAS },
+
     ]
 
     /**

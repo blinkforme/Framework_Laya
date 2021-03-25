@@ -2,21 +2,23 @@
 import DebugView from "./script/DebugView"
 import EliGameScene from "./script/eliminateGame/EliGameScene"
 import FailView from "./script/FailView"
+import GoBangScene from "./script/goBangGame/GoBangScene"
 import HomeView from "./script/HomeView"
 import LoadingView from "./script/LoadingView"
+import PickBallGame from "./script/pickBall/PickBallGame"
 import ResultView from "./script/ResultView"
 import FlyGold from "./core/ui/FlyGold"
 /*
 * 游戏初始化配置;
 */
 export default class GameConfig{
-    static width:number=1280;
-    static height:number=720;
-    static scaleMode:string="exactfit";
-    static screenMode:string="horizontal";
+    static width:number=720;
+    static height:number=1280;
+    static scaleMode:string="showall";
+    static screenMode:string="vertical";
     static alignV:string="middle";
     static alignH:string="center";
-    static startScene:any="view/EliGame.scene";
+    static startScene:any="view/GoBang.scene";
     static sceneRoot:string="";
     static debug:boolean=false;
     static stat:boolean=true;
@@ -28,8 +30,10 @@ export default class GameConfig{
         reg("script/DebugView.ts",DebugView);
         reg("script/eliminateGame/EliGameScene.ts",EliGameScene);
         reg("script/FailView.ts",FailView);
+        reg("script/goBangGame/GoBangScene.ts",GoBangScene);
         reg("script/HomeView.ts",HomeView);
         reg("script/LoadingView.ts",LoadingView);
+        reg("script/pickBall/PickBallGame.ts",PickBallGame);
         reg("script/ResultView.ts",ResultView);
         reg("core/ui/FlyGold.ts",FlyGold);
     }

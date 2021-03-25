@@ -1,12 +1,12 @@
 {
     "x":0,
     "type":"UIBaseView",
-    "selectedBox":2,
-    "selecteID":20,
+    "selectedBox":20,
+    "selecteID":24,
     "searchKey":"UIBaseView",
-    "props":{"width":1280,"sceneColor":"#000000","runtime":"script/HomeView.ts","mouseThrough":false,"height":720,"centerY":0,"centerX":0},
+    "props":{"width":720,"sceneColor":"#000000","runtime":"script/HomeView.ts","mouseThrough":false,"height":1280,"centerY":0,"centerX":0},
     "nodeParent":-1,
-    "maxID":23,
+    "maxID":25,
     "label":"UIBaseView",
     "isOpen":true,
     "isDirectory":true,
@@ -18,7 +18,7 @@
             "x":15,
             "type":"Box",
             "searchKey":"Box",
-            "props":{"width":1280,"height":720,"centerY":0,"centerX":0},
+            "props":{"width":720,"height":1280,"centerY":0,"centerX":0},
             "nodeParent":2,
             "label":"Box",
             "isOpen":true,
@@ -30,14 +30,42 @@
                 {
                     "x":30,
                     "type":"Button",
-                    "searchKey":"Button,btnStart",
-                    "props":{"y":575,"x":537,"var":"btnStart","stateNum":"1","skin":"ui/common_ex/btn_yellow.png","labelSize":35,"labelFont":"Microsoft YaHei","labelColors":"#a4460d","labelBold":true,"label":"开心消消乐"},
+                    "searchKey":"Button,eliBtn",
+                    "props":{"y":156,"x":70,"var":"eliBtn","stateNum":"1","skin":"ui/common_ex/btn_yellow.png","labelSize":35,"labelFont":"Microsoft YaHei","labelColors":"#a4460d","labelBold":true,"label":"消消乐"},
                     "nodeParent":20,
-                    "label":"btnStart",
+                    "label":"eliBtn",
                     "isDirectory":false,
                     "isAniNode":true,
                     "hasChild":false,
                     "compId":22,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Button",
+                    "searchKey":"Button,pickBtn",
+                    "props":{"y":400,"x":70,"var":"pickBtn","stateNum":"1","skin":"ui/common_ex/btn_yellow.png","labelSize":35,"labelFont":"Microsoft YaHei","labelColors":"#a4460d","labelBold":true,"label":"接星星"},
+                    "nodeParent":20,
+                    "label":"pickBtn",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":23,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Button",
+                    "searchKey":"Button,chessBtn",
+                    "props":{"y":640,"x":70,"var":"chessBtn","stateNum":"1","skin":"ui/common_ex/btn_yellow.png","labelSize":35,"labelFont":"Microsoft YaHei","labelColors":"#a4460d","labelBold":true,"label":"五子棋"},
+                    "nodeParent":20,
+                    "label":"chessBtn",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":24,
                     "child":[
                         ]
                 }]

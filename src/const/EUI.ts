@@ -63,6 +63,18 @@ let EUI = {
         banner: true,
         misTouch:'imgRestart'
     },
+    PickBallView: {
+        class: "script/pickBall/PickBallGame.ts",
+        mask: true,
+        banner: true,
+        misTouch:'imgRestart'
+    },
+    ChessView: {
+        class: "script/goBangGame/GoBangScene.ts",
+        mask: true,
+        banner: true,
+        misTouch:'imgRestart'
+    },
 }
 
 export default EUI;

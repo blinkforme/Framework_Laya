@@ -1,0 +1,26 @@
+{
+    "x":0,
+    "type":"Image",
+    "selectedBox":6,
+    "searchKey":"Image,image",
+    "props":{"width":80,"presetID":1,"preset":"laya/pages/prefab/starIcon.prefab","name":"image","isPresetRoot":true,"height":80},
+    "nodeParent":-1,
+    "maxID":8,
+    "label":"image",
+    "isOpen":true,
+    "isDirectory":false,
+    "isAniNode":true,
+    "hasChild":false,
+    "compId":6,
+    "child":[
+        ],
+    "animations":[
+        {
+            "nodes":[
+                ],
+            "name":"ani1",
+            "id":1,
+            "frameRate":24,
+            "action":0
+        }]
+}

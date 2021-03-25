@@ -5,7 +5,6 @@ import Scene=Laya.Scene;
 import {base} from './../UIBaseView';
 import UIBaseView = base.UIBaseView;
 UIBaseView.init();
-var REG: Function = Laya.ClassUtils.regClass;
 export module ui.view {
     export class DebugViewUI extends UIBaseView {
 		public list:Laya.List;
@@ -45,8 +44,22 @@ export module ui.view {
         }
     }
     REG("ui.view.FailViewUI",FailViewUI);
+    export class GoBangUI extends UIBaseView {
+		public chessboard:Laya.Box;
+		public winTip:Laya.Label;
+		public gameTime:Laya.Label;
+		public startOver:Laya.Button;
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.loadScene("view/GoBang");
+        }
+    }
+    REG("ui.view.GoBangUI",GoBangUI);
     export class HomeViewUI extends UIBaseView {
-		public btnStart:Laya.Button;
+		public eliBtn:Laya.Button;
+		public pickBtn:Laya.Button;
+		public chessBtn:Laya.Button;
         constructor(){ super()}
         createChildren():void {
             super.createChildren();
@@ -64,6 +77,24 @@ export module ui.view {
         }
     }
     REG("ui.view.LoadingViewUI",LoadingViewUI);
+    export class pickBallViewUI extends Laya.UIBaseView {
+		public returnBtn:Laya.Box;
+		public ballView:Laya.Panel;
+		public plank:Laya.Sprite;
+		public tarScore:Laya.Label;
+		public timeBar:Laya.ProgressBar;
+		public bmask:Laya.Image;
+		public scoreBox:Laya.Box;
+		public finalScore:Laya.Label;
+		public restart:Laya.Button;
+		public exitLobby:Laya.Button;
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.loadScene("view/pickBallView");
+        }
+    }
+    REG("ui.view.pickBallViewUI",pickBallViewUI);
     export class ResultViewUI extends UIBaseView {
 		public lblGold:Laya.Label;
 		public imgGold:Laya.Image;

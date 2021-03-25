@@ -90,10 +90,9 @@ export default class SoundMgr {
         var self = this;
         if (self.openMusic) {
             if (!self.$channel) {
-                console.log("666")
                 self.$channel = Laya.SoundManager.playMusic(ESound.Bgm);
             }
-            self.setMusicVolume(1);
+            self.setMusicVolume(0.5);
         }
     }
 

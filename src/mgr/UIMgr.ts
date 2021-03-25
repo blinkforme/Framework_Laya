@@ -241,7 +241,7 @@ export default class UIMgr {
         var mask = UIMgr._maskBg;
         var stage = Laya.stage;
         if (!mask) {
-            mask = UIMgr._maskBg = new Laya.Image("common/blank_2.png");
+            mask = UIMgr._maskBg = new Laya.Image("ui/common_bg/blank_2.png");
             mask.sizeGrid = "2,2,2,2";
             mask.size(stage.width + 20, stage.height + 20);
             mask.pos(-10, -10);

@@ -41,7 +41,7 @@ export default class ItemBox extends Laya.Image {
     private onClickChecked():void
     {
         let img = this.mItem.getChildByName("icon") as Laya.Image;
-        // this.callBackClick.runWith([this.id, this.type, this.x, this.y])
+        this.callBackClick.runWith([this.id, this.type, this.x, this.y])
         let p_visible = img.visible;
         if (p_visible) {
             this.callBackClick.runWith([true, this.id, this.type, this.x, this.y]);

@@ -23,9 +23,11 @@ export default class EliGameScene extends ui.view.EliGameUI {
     /**总分数*/
     public scoreAll: number
     /**横向方块个数*/
-    public item_W = 8;
+    public item_W = 9;
     /**纵向方块个数*/
     public item_H = 9;
+    /**交换的item数组*/
+    public item_change = []
 
     constructor() {
         super();
@@ -54,17 +56,31 @@ export default class EliGameScene extends ui.view.EliGameUI {
         this.itemArr = [];
         this.itemArr_check = [];
         this.id = 0;
-        let callBackClick: Laya.Handler = Laya.Handler.create(this, this.setItemState, null, false)
+        let callBackClick: Laya.Handler = Laya.Handler.create(this, this. setItemState, null, false)
         for (let k = 0; k < this.item_H; k++) {
             for (let j = 0; j < this.item_W; j++) {
-                let type: number = Math.ceil(Math.random() * 3);
+                let type: number = Math.ceil(Math.random() * 5);
                 let item = new ItemBox(this.id, type, j * EliConfig.ICON_W, k * EliConfig.ICON_W, callBackClick)
                 item.pos(j * EliConfig.ICON_W + 40, k * EliConfig.ICON_W + 40);
                 item.anchorX = item.anchorY = 0.5;
+                // item.type = this.GetType(type,j * EliConfig.ICON_W,k * EliConfig.ICON_W)
                 this.itemArr.push(item)
                 this.board.addChild(item)
                 this.id++
             }
+        }
+    }
+
+    private GetType(type: any, x: number, y: number): number {
+        let allType = type;
+        this.FindItems(type, x, y)
+        if (this.itemArr_check.length > 2) {
+            console.log("当前绘图违规/重新绘制type")
+            allType = Math.ceil(Math.random() * 5);
+            this.GetType(allType, x, y)
+        } else {
+            console.log("最终type：",allType)
+            return allType
         }
     }
 
@@ -79,6 +95,19 @@ export default class EliGameScene extends ui.view.EliGameUI {
 
     private setItemState(isShow: any, id: any, type: any, x: any, y: any): void {
         this.setVarScore(0, 0);
+        let item: ItemBox = this.itemArr[id + ""];
+        let icon = item.mItem.getChildByName("icon") as Laya.Image;
+        if (this.item_change.length == 0) {
+            this.item_change.push(item)
+            icon.visible = true;
+        } else if (this.item_change.length == 1) {
+            this.item_change.push(item)
+            let A: ItemBox = this.item_change[0];
+            this.itemArr[this.item_change[0].id + ""].x = this.itemArr[this.item_change[1].id + ""].x;
+            this.itemArr[this.item_change[0].id + ""].y = this.itemArr[this.item_change[1].id + ""].y;
+            this.itemArr[this.item_change[1].id + ""].x = A.x;
+            this.itemArr[this.item_change[1].id + ""].y = A.y;
+        }
         if (isShow && this.itemArr_check.length > 2) {
             let nItem: Laya.Image;
             let nIndex: number;
@@ -167,6 +196,8 @@ export default class EliGameScene extends ui.view.EliGameUI {
 
     FindItems(type: any, x: any, y: any) {
         let icon: Laya.Image;
+
+        console.log("type:",type,"x:",x,"y:",y)
         let itemNow: Laya.Image;
         for (let i = 0; i < this.itemArr.length; i++) {
             if (this.itemArr[i].type === type) {
@@ -174,28 +205,34 @@ export default class EliGameScene extends ui.view.EliGameUI {
                 if (itemNow.x === x + 80 && itemNow.y === y) {
                     if (this.itemArr_check.indexOf(itemNow) == -1) {
                         this.itemArr_check.push(itemNow);
+                        console.log("可消除数组1",this.itemArr_check)
                         this.FindItems(type, itemNow.x, itemNow.y);
                     }
                 } else if (itemNow.x === x - 80 && itemNow.y === y) {
                     if (this.itemArr_check.indexOf(itemNow) == -1) {
                         this.itemArr_check.push(itemNow);
+                        console.log("可消除数组2",this.itemArr_check)
                         this.FindItems(type, itemNow.x, itemNow.y);
                     }
                 } else if (itemNow.y === y + 80 && itemNow.x === x) {
                     if (this.itemArr_check.indexOf(itemNow) == -1) {
                         this.itemArr_check.push(itemNow);
+                        console.log("可消除数组3",this.itemArr_check)
                         this.FindItems(type, itemNow.x, itemNow.y);
                     }
                 } else if (itemNow.y === y - 80 && itemNow.x === x) {
                     if (this.itemArr_check.indexOf(itemNow) == -1) {
                         this.itemArr_check.push(itemNow);
+                        console.log("可消除数组4",this.itemArr_check)
                         this.FindItems(type, itemNow.x, itemNow.y);
                     }
                 }
             }
-            icon = this.itemArr[i].mItem.getChildByName("icon") as Laya.Image;
-            icon.visible = false;
+            // icon = this.itemArr[i].mItem.getChildByName("icon") as Laya.Image;
+            // icon.visible = false;
         }
+        console.log("可消除数组",this.itemArr_check)
+        console.log("总数组",this.itemArr)
     }
 
     private setItemPos(x: number, y: number) {
@@ -206,13 +243,11 @@ export default class EliGameScene extends ui.view.EliGameUI {
                     Laya.Tween.to(this.itemArr[i], {y: this.itemArr[i].y + 80}, EliConfig.TWEEN_TIME);
                     this.itemArr[i].y = this.itemArr[i].y + 80;
                 }
-
                 if (this.itemArr[i].x === x) {
                     n++;
                 }
             }
         }
-
         if (n === 0) {
             for (let i = 0; i < this.itemArr.length; i++) {
                 if (this.itemArr[i].x > x) {

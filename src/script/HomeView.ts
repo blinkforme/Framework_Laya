@@ -11,7 +11,9 @@ export default class HomeView extends ui.view.HomeViewUI{
         UIMgr.closeUI(EUI.LoadingView);
         console.log("适配调整1")
         this.screenResize();
-        this.regClick(this.btnStart,this.onStart);
+        this.regClick(this.eliBtn,this.onEliBtnClick);
+        this.regClick(this.pickBtn,this.onPickBallClick)
+        this.regClick(this.chessBtn,this.onChessClick)
 
     }
 
@@ -29,10 +31,20 @@ export default class HomeView extends ui.view.HomeViewUI{
         this.size(Laya.stage.width, Laya.stage.height)
     }
 
-    private onStart(){
+    private onEliBtnClick(){
         console.log("点击")
         UIMgr.closeUI(EUI.HomeView)
         UIMgr.openUI(EUI.EliminateView);
+    }
+
+    private onPickBallClick(){
+        UIMgr.closeUI(EUI.HomeView)
+        UIMgr.openUI(EUI.PickBallView);
+    }
+
+    private onChessClick(){
+        UIMgr.closeUI(EUI.HomeView)
+        UIMgr.openUI(EUI.ChessView);
     }
 
     public register(){

@@ -19,6 +19,8 @@ let EventType = {
     ChangeRoleModel:"ChangeRoleModel",      //改变自己模型
 
     ScreenResize:"ScreenResize",   //调整适配
+    GoBangWin:"GoBangWin",  //五子棋输赢事件
+    ChessEd:"ChessEd"  //五子棋输赢事件
 }
 
 export default EventType
