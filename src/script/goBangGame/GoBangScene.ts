@@ -3,6 +3,8 @@ import ChessItem from "./ChessItem";
 import EventMgr from "../../mgr/EventMgr";
 import EventType from "../../const/EventType";
 import GoBangM from "../../model/GoBangM";
+import UIMgr from "../../mgr/UIMgr";
+import EUI from "../../const/EUI";
 
 export default class GoBangScene extends ui.view.GoBangUI {
 
@@ -21,7 +23,8 @@ export default class GoBangScene extends ui.view.GoBangUI {
         this.GameInit()
         GoBangM.instance.isBlack = true;
         this.chessboard.on(Laya.Event.MOUSE_DOWN, this, this.onChessMouseDown)
-        this.startOver.on(Laya.Event.CLICK, this, this.onStartOver)
+        this.regClick(this.startOver,this.onStartOver)
+        this.regClick(this.returnBtn,this.onReturnClick)
         this.GameTimer();
     }
 
@@ -53,6 +56,7 @@ export default class GoBangScene extends ui.view.GoBangUI {
 
     public GameTimer() {
         var self = this;
+        self.gameTime.text = "下棋倒计时:" + self.time;
         Laya.timer.loop(1000, this, function () {
             if (self.time <= 0) {
                 let type: number = GoBangM.instance.isBlack ? 1 : 2 //console.log(GoBangM.instance.isBlack?"黑棋赢了":"白棋赢了")
@@ -176,6 +180,11 @@ export default class GoBangScene extends ui.view.GoBangUI {
         this.gameTime.text = "下棋倒计时:" + this.time;
         Laya.timer.clearAll(this)
         this.GameTimer()
+    }
+
+    public onReturnClick(){
+        UIMgr.closeUI(EUI.ChessView)
+        UIMgr.openUI(EUI.HomeView)
     }
 
 

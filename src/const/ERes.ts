@@ -26,7 +26,8 @@ addRoot(EAtlas, AtlasRoot);
 let ESound = {
     Bgm: "bgMusic.mp3",
     BtnClick: "click.mp3",
-    getCoin: "getCoin.mp3"
+    getCoin: "getCoin.mp3",
+    chessDown:"chessDown.mp3"
 };
 addRoot(ESound, SoundRoot);
 

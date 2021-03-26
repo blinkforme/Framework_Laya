@@ -5,6 +5,7 @@ import Scene=Laya.Scene;
 import {base} from './../UIBaseView';
 import UIBaseView = base.UIBaseView;
 UIBaseView.init();
+var REG: Function = Laya.ClassUtils.regClass;
 export module ui.view {
     export class DebugViewUI extends UIBaseView {
 		public list:Laya.List;
@@ -44,11 +45,12 @@ export module ui.view {
         }
     }
     REG("ui.view.FailViewUI",FailViewUI);
-    export class GoBangUI extends UIBaseView {
+    export class GoBangUI extends Laya.UIBaseView {
 		public chessboard:Laya.Box;
 		public winTip:Laya.Label;
 		public gameTime:Laya.Label;
 		public startOver:Laya.Button;
+		public returnBtn:Laya.Box;
         constructor(){ super()}
         createChildren():void {
             super.createChildren();
@@ -60,6 +62,7 @@ export module ui.view {
 		public eliBtn:Laya.Button;
 		public pickBtn:Laya.Button;
 		public chessBtn:Laya.Button;
+		public numGameBtn:Laya.Button;
         constructor(){ super()}
         createChildren():void {
             super.createChildren();
@@ -77,6 +80,14 @@ export module ui.view {
         }
     }
     REG("ui.view.LoadingViewUI",LoadingViewUI);
+    export class NumGameViewUI extends Laya.UIBaseView {
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.loadScene("view/NumGameView");
+        }
+    }
+    REG("ui.view.NumGameViewUI",NumGameViewUI);
     export class pickBallViewUI extends Laya.UIBaseView {
 		public returnBtn:Laya.Box;
 		public ballView:Laya.Panel;

@@ -3,6 +3,8 @@ import GoBangScene from "./GoBangScene";
 import GoBangM from "../../model/GoBangM";
 import EventMgr from "../../mgr/EventMgr";
 import EventType from "../../const/EventType";
+import SoundMgr from "../../mgr/SoundMgr";
+import {ESound} from "../../const/ERes";
 
 export default class ChessItem extends Laya.Image {
 
@@ -41,6 +43,7 @@ export default class ChessItem extends Laya.Image {
     public onMouseUpChecked() {
         GoBangM.instance.isBlack = !GoBangM.instance.isBlack
         GoBangM.instance.mouseDownSwitch = false;
+        SoundMgr.playSound(ESound.chessDown)
         console.log("arr:", GoBangM.instance.chessList)
         if (GoBangM.instance.chessList[this.tx][this.ty] == 0) {
             GoBangM.instance.chessList[this.tx][this.ty] = GoBangM.instance._isBlack ? 1 : 2

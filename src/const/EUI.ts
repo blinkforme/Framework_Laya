@@ -75,6 +75,12 @@ let EUI = {
         banner: true,
         misTouch:'imgRestart'
     },
+    NumGameView: {
+        class: "script/2048Game/NumGameScene.ts",
+        mask: true,
+        banner: true,
+        misTouch:'imgRestart'
+    },
 }
 
 export default EUI;

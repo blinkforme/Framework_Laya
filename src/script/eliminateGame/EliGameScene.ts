@@ -41,7 +41,7 @@ export default class EliGameScene extends ui.view.EliGameUI {
     public onEnable() {
         this.GameInit();
         this.GreatBoard();
-        this.returnBtn.on(Laya.Event.CLICK, this, this.onReturnClick)
+        this.regClick(this.returnBtn, this.onReturnClick)
     }
 
     private GreatBoard(): void {
@@ -56,7 +56,7 @@ export default class EliGameScene extends ui.view.EliGameUI {
         this.itemArr = [];
         this.itemArr_check = [];
         this.id = 0;
-        let callBackClick: Laya.Handler = Laya.Handler.create(this, this. setItemState, null, false)
+        let callBackClick: Laya.Handler = Laya.Handler.create(this, this.setItemState, null, false)
         for (let k = 0; k < this.item_H; k++) {
             for (let j = 0; j < this.item_W; j++) {
                 let type: number = Math.ceil(Math.random() * 5);
@@ -79,7 +79,7 @@ export default class EliGameScene extends ui.view.EliGameUI {
             allType = Math.ceil(Math.random() * 5);
             this.GetType(allType, x, y)
         } else {
-            console.log("最终type：",allType)
+            console.log("最终type：", allType)
             return allType
         }
     }
@@ -197,7 +197,7 @@ export default class EliGameScene extends ui.view.EliGameUI {
     FindItems(type: any, x: any, y: any) {
         let icon: Laya.Image;
 
-        console.log("type:",type,"x:",x,"y:",y)
+        console.log("type:", type, "x:", x, "y:", y)
         let itemNow: Laya.Image;
         for (let i = 0; i < this.itemArr.length; i++) {
             if (this.itemArr[i].type === type) {
@@ -205,25 +205,25 @@ export default class EliGameScene extends ui.view.EliGameUI {
                 if (itemNow.x === x + 80 && itemNow.y === y) {
                     if (this.itemArr_check.indexOf(itemNow) == -1) {
                         this.itemArr_check.push(itemNow);
-                        console.log("可消除数组1",this.itemArr_check)
+                        console.log("可消除数组1", this.itemArr_check)
                         this.FindItems(type, itemNow.x, itemNow.y);
                     }
                 } else if (itemNow.x === x - 80 && itemNow.y === y) {
                     if (this.itemArr_check.indexOf(itemNow) == -1) {
                         this.itemArr_check.push(itemNow);
-                        console.log("可消除数组2",this.itemArr_check)
+                        console.log("可消除数组2", this.itemArr_check)
                         this.FindItems(type, itemNow.x, itemNow.y);
                     }
                 } else if (itemNow.y === y + 80 && itemNow.x === x) {
                     if (this.itemArr_check.indexOf(itemNow) == -1) {
                         this.itemArr_check.push(itemNow);
-                        console.log("可消除数组3",this.itemArr_check)
+                        console.log("可消除数组3", this.itemArr_check)
                         this.FindItems(type, itemNow.x, itemNow.y);
                     }
                 } else if (itemNow.y === y - 80 && itemNow.x === x) {
                     if (this.itemArr_check.indexOf(itemNow) == -1) {
                         this.itemArr_check.push(itemNow);
-                        console.log("可消除数组4",this.itemArr_check)
+                        console.log("可消除数组4", this.itemArr_check)
                         this.FindItems(type, itemNow.x, itemNow.y);
                     }
                 }
@@ -231,8 +231,8 @@ export default class EliGameScene extends ui.view.EliGameUI {
             // icon = this.itemArr[i].mItem.getChildByName("icon") as Laya.Image;
             // icon.visible = false;
         }
-        console.log("可消除数组",this.itemArr_check)
-        console.log("总数组",this.itemArr)
+        console.log("可消除数组", this.itemArr_check)
+        console.log("总数组", this.itemArr)
     }
 
     private setItemPos(x: number, y: number) {
