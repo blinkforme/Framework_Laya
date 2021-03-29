@@ -131,60 +131,44 @@ export default class NumGameScene extends ui.view.NumGameViewUI {
             let isMoved = false;//格子是否有移动，有移动才生产新的格子
             if (Math.abs(touch_now_x - touch_x) > Math.abs(touch_now_y - touch_y) && touch_now_x > touch_x) {
                 console.log("向右滑")
-                for (let i = 0; i < 4; i++) {
-                    for (let j = 2; j >= 0; j--) {
+                for (var i = 0; i < 4; i++) {
+                    for (var j = 2; j >= 0; j--) {//第4列是不用移动的
                         if (self.data_map.get(i + "" + j) != null) {
-                            let moveCount = 0
-                            let isDouble = false;
-                            for (let k = j + 1; k <= 3; k++) {
+                            var moveCount = 0;//移动的格子数
+                            var isDouble = false;//是否翻倍，当两个格子重合时，说明数字相等，则数值翻倍
+                            for (var k = j + 1; k <= 3; k++) {
                                 if (self.data_map.get(i + "" + k) == null) {
-                                    moveCount++
-                                } else if (self.data_map.get(i + "" + k) == self.data_map.get(i + "" + j)) {
-                                    moveCount++
+                                    moveCount++;
+                                } else if (self.data_map.get(i + "" + j).number == self.data_map.get(i + "" + k).number) {
+                                    moveCount++;
                                     isDouble = true;
                                     break;
                                 } else {
-                                    break
+                                    break;
                                 }
+                            }
+                            //移动数字位置
+                            if (moveCount > 0) {
+                                var sp_number = self.data_map.get(i + "" + j).sp_number;
+                                var new_x = sp_number.x + self.bg_sp_width * 0.04 * moveCount + moveCount * self.bg_sp_width * 0.2;
+                                Laya.Tween.to(sp_number, { x: new_x }, 100, Laya.Ease.linearIn, null, 0);
+                                //更新位置数据
+                                if (isDouble) {
+                                    self.bg_sp.removeChild(self.data_map.get(i + "" + (j + moveCount)).sp_number);//将原来的清除掉
+                                    var new_number, new_color, new_font;//new_number 新的格子数值，new_color 格子的颜色，new_font 新的字体
+                                    new_number = self.data_map.get(i + "" + j).number * 2;//数值翻倍
 
-                                if (moveCount > 0) {
-                                    let sp_number = self.data_map.get(i + "" + j).sp_number;
-                                    let now_x = sp_number.x + self.bg_sp.width * 0.24 * moveCount
-                                    Laya.Tween.to(sp_number, { x: now_x }, 100, Laya.Ease.linearIn, null, 0);
 
-                                    //更新位置
-                                    if (isDouble){
-                                        self.bg_sp.removeChild(self.data_map.get(i + "" + (j + moveCount)).sp_number);//将原来的清除掉
-                                        let new_number, new_color, new_font; //new_number 新的格子数值，new_color 格子的颜色，new_font 新的字体
-                                        new_number = self.data_map.get(i + "" + j).number * 2;//数值翻倍
+                                    sp_number.graphics.clear();//清除原来的绘图指令，然后重绘
+                                    sp_number.graphics.drawRect(0, 0, self.bg_sp_width * 0.2, self.bg_sp_height * 0.2, new_color);
 
-                                        for (let i_color = 2; i_color <= 15; i_color++) {//获取当前数值是 2 的多少次方，1024 是 2 的10次方
-                                            if (Math.pow(2, i_color) == new_number) {
-                                                new_color = i_color <= this.drawColorArr.length ? this.drawColorArr[i_color - 1] : this.drawColorArr[this.drawColorArr.length - 1];
-                                                if (i_color < 4) {
-                                                    new_font = 90;
-                                                } else if (i_color < 7) {
-                                                    new_font = 70;
-                                                } else if (i_color < 10) {
-                                                    new_font = 50;
-                                                } else {
-                                                    new_font = 40;
-                                                }
-                                                break;
-                                            }
-                                        }
-                                        sp_number.graphics.clear();//清除原来的绘图指令，然后重绘
-                                        sp_number.graphics.drawRect(0, 0, self.bg_sp_width * 0.2, self.bg_sp_height * 0.2, new_color);
-
-                                        sp_number.graphics.fillText(new_number + "",
-                                            sp_number.width * 0.5, sp_number.height * 0.5 - new_font / 2, new_font + "px SimHei", "#fff", "center");
-                                        self.data_map.get(i + "" + j).number = new_number;//更新缓存的数据
-                                    self.data_map.set(i + "" + (j + moveCount), { "number": self.data_map.get(i + "" + j).number, "sp_number": sp_number });
-                                    self.data_map.set(i + "" + j, null);
-                                    isMoved = true;
-                                    }
+                                    sp_number.graphics.fillText(new_number + "",
+                                        sp_number.width * 0.5, sp_number.height * 0.5 - new_font / 2, "100px SimHei", "#fff", "center");
+                                    self.data_map.get(i + "" + j).number = new_number;//更新缓存的数据
                                 }
-
+                                self.data_map.set(i + "" + (j + moveCount), { "number": self.data_map.get(i + "" + j).number, "sp_number": sp_number });
+                                self.data_map.set(i + "" + j, null);
+                                isMoved = true;
                             }
                         }
                     }
@@ -217,25 +201,25 @@ export default class NumGameScene extends ui.view.NumGameViewUI {
                                     self.bg_sp.removeChild(self.data_map.get(i + "" + (j - moveCount)).sp_number);//将原来的清除掉
                                     let new_number, new_color, new_font;//new_number 新的格子数值，new_color 格子的颜色
                                     new_number = self.data_map.get(i + "" + j).number * 2;//数值翻倍
-                                    for (let i_color = 2; i_color <= 15; i_color++) {//获取当前数值是 2 的多少次方，1024 是 2 的10次方
-                                        if (Math.pow(2, i_color) == new_number) {
-                                            new_color = i_color <= self.drawColorArr.length ? self.drawColorArr[i_color - 1] : self.drawColorArr[self.drawColorArr.length - 1];
-                                            if (i_color < 4) {
-                                                new_font = 90;
-                                            } else if (i_color < 7) {
-                                                new_font = 70;
-                                            } else if (i_color < 10) {
-                                                new_font = 50;
-                                            } else {
-                                                new_font = 40;
-                                            }
-                                            break;
-                                        }
-                                    }
+                                    // for (let i_color = 2; i_color <= 15; i_color++) {//获取当前数值是 2 的多少次方，1024 是 2 的10次方
+                                    //     if (Math.pow(2, i_color) == new_number) {
+                                    //         new_color = i_color <= self.drawColorArr.length ? self.drawColorArr[i_color - 1] : self.drawColorArr[self.drawColorArr.length - 1];
+                                    //         if (i_color < 4) {
+                                    //             new_font = 90;
+                                    //         } else if (i_color < 7) {
+                                    //             new_font = 70;
+                                    //         } else if (i_color < 10) {
+                                    //             new_font = 50;
+                                    //         } else {
+                                    //             new_font = 40;
+                                    //         }
+                                    //         break;
+                                    //     }
+                                    // }
                                     sp_number.graphics.clear();//清除原来的绘图指令，然后重绘
                                     sp_number.graphics.drawRect(0, 0, self.bg_sp_width * 0.2, self.bg_sp_height * 0.2, new_color);
                                     sp_number.graphics.fillText(new_number + "",
-                                        sp_number.width * 0.5, sp_number.height * 0.5 - new_font / 2, new_font + "px SimHei", "#fff", "center");
+                                        sp_number.width * 0.5, sp_number.height * 0.5 - new_font / 2,  "100px SimHei", "#fff", "center");
                                     self.data_map.get(i + "" + j).number = new_number;//更新缓存的数据
                                 }
                                 self.data_map.set(i + "" + (j - moveCount), { "number": self.data_map.get(i + "" + j).number, "sp_number": sp_number });
@@ -273,25 +257,11 @@ export default class NumGameScene extends ui.view.NumGameViewUI {
                                     self.bg_sp.removeChild(self.data_map.get((i + moveCount) + "" + j).sp_number);//将原来的清除掉
                                     let new_number, new_color, new_font;//new_number 新的格子数值，new_color 格子的颜色
                                     new_number = self.data_map.get(i + "" + j).number * 2;//数值翻倍
-                                    for (let i_color = 2; i_color <= 15; i_color++) {//获取当前数值是 2 的多少次方，1024 是 2 的10次方
-                                        if (Math.pow(2, i_color) == new_number) {
-                                            new_color = i_color <= self.drawColorArr.length ? self.drawColorArr[i_color - 1] : self.drawColorArr[self.drawColorArr.length - 1];
-                                            if (i_color < 4) {
-                                                new_font = 90;
-                                            } else if (i_color < 7) {
-                                                new_font = 70;
-                                            } else if (i_color < 10) {
-                                                new_font = 50;
-                                            } else {
-                                                new_font = 40;
-                                            }
-                                            break;
-                                        }
-                                    }
                                     sp_number.graphics.clear();//清除原来的绘图指令，然后重绘
                                     sp_number.graphics.drawRect(0, 0, self.bg_sp_width * 0.2, self.bg_sp_height * 0.2, new_color);
                                     sp_number.graphics.fillText(new_number + "",
-                                        sp_number.width * 0.5, sp_number.height * 0.5 - new_font / 2, new_font + "px SimHei", "#fff", "center");
+                                        sp_number.width * 0.5, sp_number.height * 0.5 - new_font / 2,   "100px SimHei", "#fff", "center");
+                                    console.log("xia---",)
                                     self.data_map.get(i + "" + j).number = new_number;//更新缓存的数据
                                 }
                                 self.data_map.set(((i + moveCount) + "" + j), { "number": self.data_map.get(i + "" + j).number, "sp_number": sp_number });
@@ -360,14 +330,14 @@ export default class NumGameScene extends ui.view.NumGameViewUI {
                 }
             }
             if (isMoved) {//只有各自发生移动，才生产新的数字
-                var indexArr = this.getRandomIndex();
+                var indexArr = self.getRandomIndex();
                 if (indexArr.length == 0) {
                     alert("Game Over");
                 } else {
-                    this.createNumber(indexArr[0], indexArr[1]);
+                    self.createNumber(indexArr[0], indexArr[1]);
                 }
             }
-            console.log(this.data_map);
+            console.log(self.data_map);
         });
     }
 

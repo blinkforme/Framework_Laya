@@ -19,7 +19,7 @@ export default class GameConfig{
     static screenMode:string="vertical";
     static alignV:string="middle";
     static alignH:string="center";
-    static startScene:any="view/NumGameView.scene";
+    static startScene:any="view/DebugView.scene";
     static sceneRoot:string="";
     static debug:boolean=false;
     static stat:boolean=true;

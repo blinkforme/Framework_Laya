@@ -7,7 +7,7 @@ import UIBaseView = base.UIBaseView;
 UIBaseView.init();
 var REG: Function = Laya.ClassUtils.regClass;
 export module ui.view {
-    export class DebugViewUI extends UIBaseView {
+    export class DebugViewUI extends Laya.UIBaseView {
 		public list:Laya.List;
 		public btnBox:Laya.Box;
 		public btnClear:Laya.Button;
@@ -23,7 +23,7 @@ export module ui.view {
         }
     }
     REG("ui.view.DebugViewUI",DebugViewUI);
-    export class EliGameUI extends UIBaseView {
+    export class EliGameUI extends Laya.UIBaseView {
 		public bg:Laya.Image;
 		public board:Laya.Box;
 		public tarScore:Laya.Label;
@@ -37,7 +37,7 @@ export module ui.view {
         }
     }
     REG("ui.view.EliGameUI",EliGameUI);
-    export class FailViewUI extends UIBaseView {
+    export class FailViewUI extends Laya.UIBaseView {
         constructor(){ super()}
         createChildren():void {
             super.createChildren();
@@ -58,7 +58,7 @@ export module ui.view {
         }
     }
     REG("ui.view.GoBangUI",GoBangUI);
-    export class HomeViewUI extends UIBaseView {
+    export class HomeViewUI extends Laya.UIBaseView {
 		public eliBtn:Laya.Button;
 		public pickBtn:Laya.Button;
 		public chessBtn:Laya.Button;
@@ -70,7 +70,7 @@ export module ui.view {
         }
     }
     REG("ui.view.HomeViewUI",HomeViewUI);
-    export class LoadingViewUI extends UIBaseView {
+    export class LoadingViewUI extends Laya.UIBaseView {
 		public bar:Laya.ProgressBar;
 		public txt:Laya.Label;
         constructor(){ super()}
@@ -106,7 +106,7 @@ export module ui.view {
         }
     }
     REG("ui.view.pickBallViewUI",pickBallViewUI);
-    export class ResultViewUI extends UIBaseView {
+    export class ResultViewUI extends Laya.UIBaseView {
 		public lblGold:Laya.Label;
 		public imgGold:Laya.Image;
 		public lblLevel:Laya.Label;
