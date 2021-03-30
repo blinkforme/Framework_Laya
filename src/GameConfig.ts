@@ -4,6 +4,7 @@ import EliGameScene from "./script/eliminateGame/EliGameScene"
 import FailView from "./script/FailView"
 import GoBangScene from "./script/goBangGame/GoBangScene"
 import HomeView from "./script/HomeView"
+import KlotskiView from "./script/klotski/KlotskiView"
 import LoadingView from "./script/LoadingView"
 import NumGameScene from "./script/2048Game/NumGameScene"
 import PickBallGame from "./script/pickBall/PickBallGame"
@@ -19,7 +20,7 @@ export default class GameConfig{
     static screenMode:string="vertical";
     static alignV:string="middle";
     static alignH:string="center";
-    static startScene:any="view/NumGameView.scene";
+    static startScene:any="view/DebugView.scene";
     static sceneRoot:string="";
     static debug:boolean=false;
     static stat:boolean=true;
@@ -33,6 +34,7 @@ export default class GameConfig{
         reg("script/FailView.ts",FailView);
         reg("script/goBangGame/GoBangScene.ts",GoBangScene);
         reg("script/HomeView.ts",HomeView);
+        reg("script/klotski/KlotskiView.ts",KlotskiView);
         reg("script/LoadingView.ts",LoadingView);
         reg("script/2048Game/NumGameScene.ts",NumGameScene);
         reg("script/pickBall/PickBallGame.ts",PickBallGame);

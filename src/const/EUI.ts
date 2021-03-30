@@ -81,6 +81,12 @@ let EUI = {
         banner: true,
         misTouch:'imgRestart'
     },
+    KlotskiView: {
+        class: "script/klotski/KlotskiView.ts",
+        mask: true,
+        banner: true,
+        misTouch:'imgRestart'
+    },
 }
 
 export default EUI;

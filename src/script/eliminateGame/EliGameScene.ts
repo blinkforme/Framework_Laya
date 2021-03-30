@@ -113,7 +113,7 @@ export default class EliGameScene extends ui.view.EliGameUI {
             let nIndex: number;
             for (let i = 0; i < this.itemArr_check.length; i++) {
                 nItem = this.itemArr_check[i] as Laya.Image;
-                nItem.parent.removeChild(nItem);
+                nItem.parent != null && nItem.parent.removeChild(nItem);
                 nIndex = this.itemArr.indexOf(nItem);
 
                 if (nIndex > -1) {

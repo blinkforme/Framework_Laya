@@ -2,11 +2,11 @@
     "x":0,
     "type":"UIBaseView",
     "selectedBox":20,
-    "selecteID":25,
+    "selecteID":26,
     "searchKey":"UIBaseView",
     "props":{"width":720,"sceneColor":"#000000","runtime":"script/HomeView.ts","mouseThrough":false,"height":1280,"centerY":0,"centerX":0},
     "nodeParent":-1,
-    "maxID":26,
+    "maxID":27,
     "label":"UIBaseView",
     "isOpen":true,
     "isDirectory":true,
@@ -73,13 +73,28 @@
                     "x":30,
                     "type":"Button",
                     "searchKey":"Button,numGameBtn",
-                    "props":{"y":878,"x":70,"var":"numGameBtn","stateNum":"1","skin":"ui/common_ex/btn_yellow.png","labelSize":35,"labelFont":"Microsoft YaHei","labelColors":"#a4460d","labelBold":true,"label":"2048"},
+                    "props":{"y":878,"x":70,"visible":false,"var":"numGameBtn","stateNum":"1","skin":"ui/common_ex/btn_yellow.png","labelSize":35,"labelFont":"Microsoft YaHei","labelColors":"#a4460d","labelBold":true,"label":"2048"},
                     "nodeParent":20,
                     "label":"numGameBtn",
                     "isDirectory":false,
                     "isAniNode":true,
                     "hasChild":false,
                     "compId":25,
+                    "child":[
+                        ],
+                    "$HIDDEN":true
+                },
+                {
+                    "x":30,
+                    "type":"Button",
+                    "searchKey":"Button,klotskiBtn",
+                    "props":{"y":886,"x":70,"var":"klotskiBtn","stateNum":"1","skin":"ui/common_ex/btn_yellow.png","labelSize":35,"labelFont":"Microsoft YaHei","labelColors":"#a4460d","labelBold":true,"label":"华容道"},
+                    "nodeParent":20,
+                    "label":"klotskiBtn",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":26,
                     "child":[
                         ]
                 }]

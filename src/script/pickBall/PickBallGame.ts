@@ -13,7 +13,7 @@ import {ESound} from "../../const/ERes";
 import ItemBall from "./ItemBall";
 import ChessItem from "../goBangGame/ChessItem";
 
-export default class PickBallGame extends ui.view.pickBallViewUI {
+export default class PickBallGame extends ui.view.PickBallViewUI {
 
     public num: number = 3
     public nowScore: number

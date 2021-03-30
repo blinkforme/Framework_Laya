@@ -15,6 +15,7 @@ export default class HomeView extends ui.view.HomeViewUI{
         this.regClick(this.pickBtn,this.onPickBallClick)
         this.regClick(this.chessBtn,this.onChessClick)
         this.regClick(this.numGameBtn,this.onNumGameClick)
+        this.regClick(this.klotskiBtn,this.onKlotskiClick)
 
     }
 
@@ -51,6 +52,11 @@ export default class HomeView extends ui.view.HomeViewUI{
     private onNumGameClick(){
         UIMgr.closeUI(EUI.HomeView)
         UIMgr.openUI(EUI.NumGameView);
+    }
+
+    public onKlotskiClick(){
+        UIMgr.closeUI(EUI.HomeView)
+        UIMgr.openUI(EUI.KlotskiView);
     }
 
     public register(){

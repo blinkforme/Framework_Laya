@@ -1,6 +1,4 @@
 import {ui} from "../../ui/layaMaxUI";
-import EventMgr from "../../mgr/EventMgr";
-import EventType from "../../const/EventType";
 
 export default class NumGameScene extends ui.view.NumGameViewUI {
 
@@ -57,9 +55,11 @@ export default class NumGameScene extends ui.view.NumGameViewUI {
         let box_sp: Laya.Sprite = new Laya.Sprite();
         for (let i = 0; i < 4; i++) {
             for (let j = 0; j < 4; j++) {
-                box_sp.graphics.drawRect((i + 1) * bg_size_width * 0.04 + i * bg_size_width * 0.2,
+                box_sp.graphics.drawRect(
+                    (i + 1) * bg_size_width * 0.04 + i * bg_size_width * 0.2,
                     (j + 1) * bg_size_height * 0.04 + j * bg_size_height * 0.2,
-                    bg_size_width * 0.2, bg_size_width * 0.2, "#CDC1B4")
+                    bg_size_width * 0.2,
+                    bg_size_width * 0.2, "#CDC1B4")
             }
         }
         this.bg_sp.addChild(box_sp)
@@ -119,6 +119,7 @@ export default class NumGameScene extends ui.view.NumGameViewUI {
         let self = this;
         let touch_x, touch_y
         touch_x = touch_y = 0
+        // let total_number = 2;
 
         this.bg_sp.on(Laya.Event.MOUSE_DOWN, this, function () {
             touch_x = Laya.stage.mouseX
@@ -128,18 +129,20 @@ export default class NumGameScene extends ui.view.NumGameViewUI {
         this.bg_sp.on(Laya.Event.MOUSE_UP, this, function () {
             let touch_now_x = Laya.stage.mouseX
             let touch_now_y = Laya.stage.mouseY
-            let isMoved = false;//格子是否有移动，有移动才生产新的格子
+            let isMoved = false;                        //格子是否有移动，有移动才生产新的格子
+            let moveCount = 0                               //移动的位置 初始为0
+            let isDouble = false;                           // 是否合并了
+            let new_number, new_color, new_font;    //new_number 新的格子数值，new_color 格子的颜色，new_font 新的字体
             if (Math.abs(touch_now_x - touch_x) > Math.abs(touch_now_y - touch_y) && touch_now_x > touch_x) {
                 console.log("向右滑")
-                for (let i = 0; i < 4; i++) {
-                    for (let j = 2; j >= 0; j--) {
-                        if (self.data_map.get(i + "" + j) != null) {
-                            let moveCount = 0
-                            let isDouble = false;
-                            for (let k = j + 1; k <= 3; k++) {
-                                if (self.data_map.get(i + "" + k) == null) {
+                for (let i = 0; i < 4; i++) {                               //遍历外部的4行
+                    for (let j = 2; j >= 0; j--) {                          //从第三列开始倒序遍历
+                        if (self.data_map.get(i + "" + j) != null) {        //第三列格子有值
+
+                            for (let k = (j + 1); k <= 3; k++) {
+                                if (self.data_map.get(i + "" + k) == null) {   // j后面一格为空
                                     moveCount++
-                                } else if (self.data_map.get(i + "" + k) == self.data_map.get(i + "" + j)) {
+                                } else if (self.data_map.get(i + "" + k) == self.data_map.get(i + "" + j)) {  //j的值==j的下一个格子
                                     moveCount++
                                     isDouble = true;
                                     break;
@@ -148,19 +151,18 @@ export default class NumGameScene extends ui.view.NumGameViewUI {
                                 }
 
                                 if (moveCount > 0) {
-                                    let sp_number = self.data_map.get(i + "" + j).sp_number;
-                                    let now_x = sp_number.x + self.bg_sp.width * 0.24 * moveCount
-                                    Laya.Tween.to(sp_number, { x: now_x }, 100, Laya.Ease.linearIn, null, 0);
+                                    let sp_number:Laya.Sprite = self.data_map.get(i + "" + j).sp_number as Laya.Sprite;    //去除准备跑的一个格子
+                                    let now_x = sp_number.x + self.bg_sp.width * 0.24 * moveCount  //向后移动的距离
+                                    Laya.Tween.to(sp_number, { x: now_x }, 100, Laya.Ease.linearIn, null, 0);  //move
 
                                     //更新位置
                                     if (isDouble){
                                         self.bg_sp.removeChild(self.data_map.get(i + "" + (j + moveCount)).sp_number);//将原来的清除掉
-                                        let new_number, new_color, new_font; //new_number 新的格子数值，new_color 格子的颜色，new_font 新的字体
                                         new_number = self.data_map.get(i + "" + j).number * 2;//数值翻倍
 
                                         for (let i_color = 2; i_color <= 15; i_color++) {//获取当前数值是 2 的多少次方，1024 是 2 的10次方
                                             if (Math.pow(2, i_color) == new_number) {
-                                                new_color = i_color <= this.drawColorArr.length ? this.drawColorArr[i_color - 1] : this.drawColorArr[this.drawColorArr.length - 1];
+                                                new_color = i_color <= self.drawColorArr.length ? self.drawColorArr[i_color - 1] : self.drawColorArr[self.drawColorArr.length - 1];
                                                 if (i_color < 4) {
                                                     new_font = 90;
                                                 } else if (i_color < 7) {
@@ -175,14 +177,13 @@ export default class NumGameScene extends ui.view.NumGameViewUI {
                                         }
                                         sp_number.graphics.clear();//清除原来的绘图指令，然后重绘
                                         sp_number.graphics.drawRect(0, 0, self.bg_sp_width * 0.2, self.bg_sp_height * 0.2, new_color);
-
                                         sp_number.graphics.fillText(new_number + "",
                                             sp_number.width * 0.5, sp_number.height * 0.5 - new_font / 2, new_font + "px SimHei", "#fff", "center");
                                         self.data_map.get(i + "" + j).number = new_number;//更新缓存的数据
                                     self.data_map.set(i + "" + (j + moveCount), { "number": self.data_map.get(i + "" + j).number, "sp_number": sp_number });
                                     self.data_map.set(i + "" + j, null);
-                                    isMoved = true;
                                     }
+                                    isMoved = true;
                                 }
 
                             }
@@ -194,8 +195,6 @@ export default class NumGameScene extends ui.view.NumGameViewUI {
                 for (let i = 0; i < 4; i++) {
                     for (let j = 1; j < 4; j++) {//第1列是不需要再移动的
                         if (self.data_map.get(i + "" + j) != null) {
-                            let moveCount = 0;//移动的格子数
-                            let isDouble = false;//是否翻倍，当两个格子重合时，说明数字相等，则数值翻倍
                             for (let k = (j - 1); k >= 0; k--) {
                                 if (self.data_map.get(i + "" + k) == null) {
                                     moveCount++;
@@ -209,13 +208,12 @@ export default class NumGameScene extends ui.view.NumGameViewUI {
                             }
                             //移动数字位置
                             if (moveCount > 0) {
-                                let sp_number = self.data_map.get(i + "" + j).sp_number;
+                                let sp_number:Laya.Sprite = self.data_map.get(i + "" + j).sp_number as Laya.Sprite;    //去除准备跑的一个格子
                                 let new_x = sp_number.x - self.bg_sp_width * 0.04 * moveCount - moveCount * self.bg_sp_width * 0.2;
                                 Laya.Tween.to(sp_number, { x: new_x }, 100, Laya.Ease.linearIn, null, 0);
                                 //更新位置数据
                                 if (isDouble) {
                                     self.bg_sp.removeChild(self.data_map.get(i + "" + (j - moveCount)).sp_number);//将原来的清除掉
-                                    let new_number, new_color, new_font;//new_number 新的格子数值，new_color 格子的颜色
                                     new_number = self.data_map.get(i + "" + j).number * 2;//数值翻倍
                                     for (let i_color = 2; i_color <= 15; i_color++) {//获取当前数值是 2 的多少次方，1024 是 2 的10次方
                                         if (Math.pow(2, i_color) == new_number) {
@@ -250,8 +248,6 @@ export default class NumGameScene extends ui.view.NumGameViewUI {
                 for (let i = 2; i >= 0; i--) {//第4行无需移动
                     for (let j = 0; j < 4; j++) {
                         if (self.data_map.get(i + "" + j) != null) {
-                            let moveCount = 0;//移动的格子数
-                            let isDouble = false;//是否翻倍，当两个格子重合时，说明数字相等，则数值翻倍
                             for (let k = (i + 1); k <= 3; k++) {
                                 if (self.data_map.get(k + "" + j) == null) {
                                     moveCount++;
@@ -265,7 +261,7 @@ export default class NumGameScene extends ui.view.NumGameViewUI {
                             }
                             //移动数字位置
                             if (moveCount > 0) {
-                                let sp_number = self.data_map.get(i + "" + j).sp_number;
+                                let sp_number:Laya.Sprite = self.data_map.get(i + "" + j).sp_number as Laya.Sprite;    //去除准备跑的一个格子
                                 let new_y = sp_number.y + self.bg_sp_height * 0.04 * moveCount + moveCount * self.bg_sp_height * 0.2;
                                 Laya.Tween.to(sp_number, { y: new_y }, 100, Laya.Ease.linearIn, null, 0);
                                 //更新位置数据
@@ -306,8 +302,6 @@ export default class NumGameScene extends ui.view.NumGameViewUI {
                 for (let i = 1; i < 4; i++) {//第1行无需移动，从第2行开始
                     for (let j = 0; j < 4; j++) {
                         if (self.data_map.get(i + "" + j) != null) {
-                            let moveCount = 0;//移动的格子数
-                            let isDouble = false;//是否翻倍，当两个格子重合时，说明数字相等，则数值翻倍
                             for (let k = (i - 1); k >= 0; k--) {
                                 if (self.data_map.get(k + "" + j) == null) {
                                     moveCount++;
@@ -321,13 +315,12 @@ export default class NumGameScene extends ui.view.NumGameViewUI {
                             }
                             //移动数字位置
                             if (moveCount > 0) {
-                                let sp_number = self.data_map.get(i + "" + j).sp_number;
+                                let sp_number:Laya.Sprite = self.data_map.get(i + "" + j).sp_number as Laya.Sprite;    //去除准备跑的一个格子
                                 let now_y = sp_number.y - self.bg_sp_height * 0.04 * moveCount - moveCount * self.bg_sp_height * 0.2;
                                 Laya.Tween.to(sp_number, { y: now_y }, 100, Laya.Ease.linearIn, null, 0);
                                 //更新位置数据
                                 if (isDouble) {
                                     self.bg_sp.removeChild(self.data_map.get((i - moveCount) + "" + j).sp_number);//将原来的清除掉
-                                    let new_number, new_color, new_font;//new_number 新的格子数值，new_color 格子的颜色
                                     new_number = self.data_map.get(i + "" + j).number * 2;//数值翻倍
                                     for (let i_color = 2; i_color <= 15; i_color++) {//获取当前数值是 2 的多少次方，1024 是 2 的10次方
                                         if (Math.pow(2, i_color) == new_number) {
@@ -360,15 +353,24 @@ export default class NumGameScene extends ui.view.NumGameViewUI {
                 }
             }
             if (isMoved) {//只有各自发生移动，才生产新的数字
-                var indexArr = this.getRandomIndex();
+                let indexArr = self.getRandomIndex();
                 if (indexArr.length == 0) {
                     alert("Game Over");
                 } else {
-                    this.createNumber(indexArr[0], indexArr[1]);
+                    self.createNumber(indexArr[0], indexArr[1]);
                 }
             }
-            console.log(this.data_map);
+            console.log(self.data_map);
         });
+    }
+
+    public applyData(){
+        for (let i = 0; i < 4; i++) {
+            for (let j = 0; j < 4; j++) {
+                if (this.data_map.get([i+""+j]))
+                {}
+            }
+        }
     }
 
     public register() {

@@ -63,6 +63,7 @@ export module ui.view {
 		public pickBtn:Laya.Button;
 		public chessBtn:Laya.Button;
 		public numGameBtn:Laya.Button;
+		public klotskiBtn:Laya.Button;
         constructor(){ super()}
         createChildren():void {
             super.createChildren();
@@ -70,6 +71,15 @@ export module ui.view {
         }
     }
     REG("ui.view.HomeViewUI",HomeViewUI);
+    export class KlotskiViewUI extends UIBaseView {
+		public case:Laya.Box;
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.loadScene("view/KlotskiView");
+        }
+    }
+    REG("ui.view.KlotskiViewUI",KlotskiViewUI);
     export class LoadingViewUI extends UIBaseView {
 		public bar:Laya.ProgressBar;
 		public txt:Laya.Label;
@@ -88,7 +98,7 @@ export module ui.view {
         }
     }
     REG("ui.view.NumGameViewUI",NumGameViewUI);
-    export class pickBallViewUI extends Laya.UIBaseView {
+    export class PickBallViewUI extends UIBaseView {
 		public returnBtn:Laya.Box;
 		public ballView:Laya.Panel;
 		public plank:Laya.Sprite;
@@ -102,10 +112,10 @@ export module ui.view {
         constructor(){ super()}
         createChildren():void {
             super.createChildren();
-            this.loadScene("view/pickBallView");
+            this.loadScene("view/PickBallView");
         }
     }
-    REG("ui.view.pickBallViewUI",pickBallViewUI);
+    REG("ui.view.PickBallViewUI",PickBallViewUI);
     export class ResultViewUI extends UIBaseView {
 		public lblGold:Laya.Label;
 		public imgGold:Laya.Image;
