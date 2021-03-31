@@ -1,7 +1,9 @@
 D .
 D music
 R 845859EE bgMusic.mp3
+R 54116E24 chessDown.mp3
 R 09A968F7 click.mp3
+R 0699B808 getCoin.mp3
 D ui
 D ui/common
 P 725EC35C 1.png
@@ -22,11 +24,14 @@ P 2593E572 diamond4.png
 P B0658C75 diamond5.png
 P F2A293CD diamond6.png
 D ui/common_bg
+P 523AF67E blank_2.png
+P B56D5A33 GoBangChes.png
 R AE525040 img_d.png
 P D683C8C9 img_dj_03.png
 P AA164959 img_jbzs_di.png
 R AAD340E0 img_ty_di.png
 P AE62BF39 img_xia_di.png
+R 9307CFB1 u=3094993793,2735954923&fm=26&gp=0.jpg
 D ui/common_ex
 P E5A8EED1 btn_blue.png
 P 22ADD8B8 btn_green.png
